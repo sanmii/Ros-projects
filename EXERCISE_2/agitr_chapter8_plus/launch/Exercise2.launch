@@ -1,0 +1,26 @@
+<launch>
+  <arg
+    name="monitortwist"
+    default="0"
+  />
+  <node
+    pkg="turtlesim"
+    type="turtlesim_node"
+    name="turtlesim"
+    respawn="true"
+  />
+  <node
+    pkg="agitr_chapter8_plus"
+    type="improved_pubvel_toggle"
+    name="create_twist"
+    required="true"
+    launch-prefix="xterm -e"
+  />
+
+  <node if="$(arg monitortwist)"
+    pkg="agitr_chapter8_plus"
+    type="spawn_turtle_plus"
+    name="spawn_turtle"
+    output="screen"
+  />
+</launch>
