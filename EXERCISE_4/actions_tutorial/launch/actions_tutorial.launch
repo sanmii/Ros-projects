@@ -1,0 +1,29 @@
+<launch> 
+  <param name="robot_description" textfile="$(find mastering_ros_robot_description_pkg)/urdf/pan_tilt.urdf" />
+
+  <node
+    pkg="actions_tutorial"
+    type="pantilt_action_server"
+    name="pantilt_action_server"
+    output = "screen"
+  />
+  
+  <!-- Starting robot state publish which will publish tf -->
+  <node
+    name="robot_state_publisher"
+    pkg="robot_state_publisher"
+    type="state_publisher"
+  />
+
+  <!-- Launch visualization in rviz -->
+  <node
+    name="rviz"
+    pkg="rviz"
+    type="rviz"
+    args="-d $(find mastering_ros_robot_description_pkg)/urdf.rviz"
+    required="true"
+  />
+</launch>
+
+
+

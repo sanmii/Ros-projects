@@ -1,0 +1,12 @@
+#goal definition
+float32 count_pan
+float32 count_tilt
+
+---
+#result definition
+float32 final_count_pan
+float32 final_count_tilt
+---
+#feedback
+float32 current_number_pan
+float32 current_number_tilt
