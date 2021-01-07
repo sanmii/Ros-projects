@@ -1,0 +1,737 @@
+<?xml version="1.0" ?>
+<launch>
+
+  <!-- q= has the rpy set in the chessboard_cameras_cell.urdf.xacro file as rpy=0 1.061379 1.570791-->
+  <!-- q3=q*roty(pi/2)*rotz(-pi/2) rotations needed between the sensor frame and the optical camera frame - they should be included in the model but are not...-->
+    <!-- MATLAB> q=UnitQuaternion.rpy([0 , 1.061379 , 1.570791])-->
+    <!-- MATLAB> q3=q*UnitQuaternion(roty(pi/2))*UnitQuaternion(rotz(-pi/2)) -->
+<!--  <node pkg="tf2_ros" type="static_transform_publisher" name="camera_left_broadcaster" args="-0.06 -0.29 0.410304  0.0 0.0000 -2.632175326794897 /world /camera_left_color" />
+  <node pkg="tf2_ros" type="static_transform_publisher" name="camera_right_broadcaster" args="0.06 0.29 0.410304  0 3.1416 0.5236  /world /camera_right_color_optical_frame" />
+-->
+
+  <arg name="rviz"  default="true"/>
+  <!-- marker detector -->
+  <!-- aruco_ros node is used to detect markers -->
+  <!-- ros wiki page: http://wiki.ros.org/aruco_ros -->
+  <!-- external page: http://www.uco.es/investiga/grupos/ava/node/26 -->
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_301"/>
+    <arg name="markerId"     value="301"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_301"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_301"/>
+    <arg name="markerId"     value="301"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_301"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_302"/>
+    <arg name="markerId"     value="302"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_302"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_302"/>
+    <arg name="markerId"     value="302"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_302"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_303"/>
+    <arg name="markerId"     value="303"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_303"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_303"/>
+    <arg name="markerId"     value="303"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_303"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_304"/>
+    <arg name="markerId"     value="304"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_304"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_304"/>
+    <arg name="markerId"     value="304"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_304"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_305"/>
+    <arg name="markerId"     value="305"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_305"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_305"/>
+    <arg name="markerId"     value="305"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_305"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_306"/>
+    <arg name="markerId"     value="306"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_306"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_306"/>
+    <arg name="markerId"     value="306"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_306"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_307"/>
+    <arg name="markerId"     value="307"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_307"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_307"/>
+    <arg name="markerId"     value="307"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_307"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_308"/>
+    <arg name="markerId"     value="308"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_308"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_308"/>
+    <arg name="markerId"     value="308"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_308"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_309"/>
+    <arg name="markerId"     value="309"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_309"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_309"/>
+    <arg name="markerId"     value="309"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_309"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_310"/>
+    <arg name="markerId"     value="310"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_310"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_310"/>
+    <arg name="markerId"     value="310"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_310"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_311"/>
+    <arg name="markerId"     value="311"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_311"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_311"/>
+    <arg name="markerId"     value="311"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_311"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_312"/>
+    <arg name="markerId"     value="312"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_312"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_312"/>
+    <arg name="markerId"     value="312"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_312"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_313"/>
+    <arg name="markerId"     value="313"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_313"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_313"/>
+    <arg name="markerId"     value="313"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_313"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_314"/>
+    <arg name="markerId"     value="314"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_314"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_314"/>
+    <arg name="markerId"     value="314"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_314"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_315"/>
+    <arg name="markerId"     value="315"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_315"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_315"/>
+    <arg name="markerId"     value="315"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_315"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_316"/>
+    <arg name="markerId"     value="316"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_316"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_316"/>
+    <arg name="markerId"     value="316"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_316"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_201"/>
+    <arg name="markerId"     value="201"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_201"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_201"/>
+    <arg name="markerId"     value="201"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_201"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_202"/>
+    <arg name="markerId"     value="202"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_202"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_202"/>
+    <arg name="markerId"     value="202"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_202"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_203"/>
+    <arg name="markerId"     value="203"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_203"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_203"/>
+    <arg name="markerId"     value="203"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_203"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_204"/>
+    <arg name="markerId"     value="204"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_204"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_204"/>
+    <arg name="markerId"     value="204"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_204"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_205"/>
+    <arg name="markerId"     value="205"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_205"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_205"/>
+    <arg name="markerId"     value="205"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_205"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_206"/>
+    <arg name="markerId"     value="206"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_206"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_206"/>
+    <arg name="markerId"     value="206"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_206"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_207"/>
+    <arg name="markerId"     value="207"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_207"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_207"/>
+    <arg name="markerId"     value="207"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_207"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_208"/>
+    <arg name="markerId"     value="208"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_208"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_208"/>
+    <arg name="markerId"     value="208"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_208"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_209"/>
+    <arg name="markerId"     value="209"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_209"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_209"/>
+    <arg name="markerId"     value="209"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_209"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_210"/>
+    <arg name="markerId"     value="210"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_210"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_210"/>
+    <arg name="markerId"     value="210"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_210"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_211"/>
+    <arg name="markerId"     value="211"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_211"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_211"/>
+    <arg name="markerId"     value="211"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_211"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_212"/>
+    <arg name="markerId"     value="212"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_212"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_212"/>
+    <arg name="markerId"     value="212"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_212"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_213"/>
+    <arg name="markerId"     value="213"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_213"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_213"/>
+    <arg name="markerId"     value="213"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_213"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_214"/>
+    <arg name="markerId"     value="214"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_214"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_314"/>
+    <arg name="markerId"     value="314"/>
+    <arg name="markerSize"   value="0.02"/>
+    <arg name="marker_frame" value="aruco_frame_314"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_215"/>
+    <arg name="markerId"     value="215"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_215"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_215"/>
+    <arg name="markerId"     value="215"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_frame_215"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="/camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam1_aruco_single_216"/>
+    <arg name="markerId"     value="216"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_2016"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_left/color/camera_info"/>
+    <arg name="image"             value="/camera_left/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_left_color_optical_frame"/>
+  </include>
+
+  <include file = "$(find realsense_lab)/launch/aruco_single.launch.xml">
+    <arg name="node_name"    value="cam2_aruco_single_216"/>
+    <arg name="markerId"     value="216"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_216"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       value="/camera_right/color/camera_info"/>
+    <arg name="image"             value="camera_right/color/image_rect_color"/>
+    <arg name="camera_frame"      value="/camera_right_color_optical_frame"/>
+  </include>
+
+  <node pkg="leire_ane" type="aruco_frames_detection" name="aruco_frames_detection"/>
+  <!-- marker detector -->
+  <!-- aruco_ros node is used to detect markers -->
+  <!-- ros wiki page: http://wiki.ros.org/aruco_ros -->
+  <!-- external page: http://www.uco.es/investiga/grupos/ava/node/26 -->
+  <env name="ROS_NAMESPACE" value="camera_left" />
+  <node name="image_proc" pkg="image_proc" type="image_proc" />
+
+  <env name="ROS_NAMESPACE" value="camera_right" />
+  <node name="image_proc2" pkg="image_proc" type="image_proc" />
+
+  <!-- Show in Rviz   -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find chesslab_setup)/config/chesslab_setup.rviz"/>
+</launch>

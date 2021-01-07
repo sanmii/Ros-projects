@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+	<include file="$(find chesslab_setup)/launch/dashboard.launch.xml">
+		<arg name="collision_check" value="true" />
+	</include>
+
+</launch>
