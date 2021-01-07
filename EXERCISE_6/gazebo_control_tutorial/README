@@ -1,0 +1,11 @@
+
+
+Changes w.r.t. mastering_ros_robot_description_pkg and seven_dosf_arm packages:
+
+1) URDF model:
+    This version of the seven dof robot arm from mastering_ros_robot_description_pkg has been modified as follows:
+    a) the base has been attached to the world
+    b) the aruco cube mesh has been added at the TCP
+
+2) Changes to the control yaml file
+    a) added controls for the fingers
