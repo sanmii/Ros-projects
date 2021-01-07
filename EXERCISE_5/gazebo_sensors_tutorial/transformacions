@@ -1,0 +1,37 @@
+<xacro:realsense-rs200 prefix="left_" parent="world">
+        <origin xyz="-0.06 -0.29 0.410304" rpy="0 1.061379 1.570791" />
+</xacro:realsense-rs200>
+
+
+Transf en rpy (compte l'ordre!)
+<node pkg="tf2_ros" type="static_transform_publisher" name="camera_left_broadcaster" args="-0.06 -0.29 0.410304 1.570791 1.061379 0 /world /color" /> 
+
+Transf en quaternions:
+MATLAB> q=UnitQuaternion.rpy(0, 1.061379, 1.570791)
+MATLAB> q=0.60985 < -0.35789, 0.35789, 0.60985 >
+En ros es q=(qx,qy,qz,qw)
+
+<node pkg="tf2_ros" type="static_transform_publisher" name="camera_left_broadcaster" args="-0.06 -0.29 0.410304 -0.35789, 0.35789, 0.60985 0.60985 /world /color" /> 
+
+Rotacio de pi/2 en y 
+MATLAB> q2=q*UnitQuaternion(roty(pi/2))
+
+<node pkg="tf2_ros" type="static_transform_publisher" name="camera_left_broadcaster" args="-0.06 -0.29 0.410304 -0.68429, 0.6843, 0.17816 0.17817 /world /color" /> 
+
+i expressió en rpy:
+MATLAB> q2.torpyans =
+MATLAB> ans = 
+   -3.1416    0.5094   -1.5708
+
+(compte l'ordre!)
+  <node pkg="tf2_ros" type="static_transform_publisher" name="camera_left_broadcaster" args="-0.06 -0.29 0.410304   -1.5708 0.5094    -3.1416 /world /color" /> 
+
+
+rotacio en z de pi/2 i expressio en rpy
+MATLAB> q3 = q2*UnitQuaternion(rotz(pi/2))
+MATLAB> q3.torpy
+   ans =
+       2.6322    0.0000    0.0
+       
+(compte l'ordre!)
+  <node pkg="tf2_ros" type="static_transform_publisher" name="camera_left_broadcaster" args="-0.06 -0.29 0.410304  3.1416 0.0000 2.6322 /world /color" /> 

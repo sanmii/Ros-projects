@@ -1,0 +1,74 @@
+<?xml version="1.0" ?>
+<launch>
+
+
+  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="camera_left_broadcaster" args="0 0 0 0 0 0 /world /color" />   -->
+  <!-- q= has the rpy set in the xacro file rpy=0 1.061379 1.570791-->
+  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="camera_left_broadcaster" args="-0.06 -0.29 0.410304 1.570791 1.061379 0 /world /color_left" />  -->
+ <!--    <node pkg="tf2_ros" type="static_transform_publisher" name="camera_right_broadcaster" args="0.06 0.29 0.410304 -1.570791 1.061379 0 /world /color_right" />  -->
+  <!-- q3=q*roty(pi/2)*rotz(-pi/2) rotations neede between the sensor frame and the camera frame - they should be included in the model but are not...-->
+    <!-- MATLAB> q=UnitQuaternion.rpy([0 , 1.061379 , 1.570791])-->
+    <!-- MATLAB> q3=q*UnitQuaternion(roty(pi/2))*UnitQuaternion(rotz(-pi/2)) -->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="camera_left_broadcaster" args="-0.06 -0.29 0.410304  0.0 0.0000 -2.632175326794897 /world /color_left" />
+  <node pkg="tf2_ros" type="static_transform_publisher" name="camera_right_broadcaster" args="0.06 0.29 0.410304  0 3.1416 0.5236  /world /color_right" /> <!--NOT VERIFIED-->
+
+    <arg name="rviz"  default="true"/>
+
+  <include file = "$(find gazebo_sensors_tutorial)/launch/aruco_single.launch">
+    <arg name="node_name"    value="aruco_single_102"/>
+    <arg name="markerId"     value="102"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_102"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       default="/left_rs200/camera/color/camera_info"/>
+    <arg name="image"             default="/left_rs200/camera/color/image_raw"/>
+    <arg name="camera_frame"      default="/color_left"/>
+  </include>
+  <include file = "$(find gazebo_sensors_tutorial)/launch/aruco_single.launch">
+    <arg name="node_name"    value="aruco_single_103"/>
+    <arg name="markerId"     value="103"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_103"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       default="/right_rs200/camera/color/camera_info"/>
+    <arg name="image"             default="/right_rs200/camera/color/image_raw"/>
+    <arg name="camera_frame"      default="/color_right"/>
+  </include>
+  <include file = "$(find gazebo_sensors_tutorial)/launch/aruco_single.launch">
+    <arg name="node_name"    value="aruco_single_100"/>
+    <arg name="markerId"     value="100"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_100"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       default="/left_rs200/camera/color/camera_info"/>
+    <arg name="image"             default="/left_rs200/camera/color/image_raw"/>
+    <arg name="camera_frame"      default="/color_left"/>
+  </include>
+
+  <include file = "$(find gazebo_sensors_tutorial)/launch/aruco_single.launch">
+    <arg name="node_name"    value="aruco_single_101"/>
+    <arg name="markerId"     value="101"/>
+    <arg name="markerSize"   value="0.03"/>
+    <arg name="marker_frame" value="aruco_101"/>
+    <arg name="reference_frame"    value="/world"/>
+    <arg name="camera_info"       default="/right_rs200/camera/color/camera_info"/>
+    <arg name="image"             default="/right_rs200/camera/color/image_raw"/>
+    <arg name="camera_frame"      default="/color_right"/>
+  </include>
+
+
+  <node pkg="gazebo_sensors_tutorial" type="aruco_frames_detection" name="aruco_frames_detection"/>
+  <!-- marker detector -->
+  <!-- aruco_ros node is used to detect markers -->
+  <!-- ros wiki page: http://wiki.ros.org/aruco_ros -->
+  <!-- external page: http://www.uco.es/investiga/grupos/ava/node/26 -->
+  <env name="ROS_NAMESPACE" value="camera_left" />
+  <node name="image_proc" pkg="image_proc" type="image_proc" />
+
+  <env name="ROS_NAMESPACE" value="camera_right" />
+  <node name="image_proc2" pkg="image_proc" type="image_proc" />
+
+
+  <!-- Show in Rviz   -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find gazebo_sensors_tutorial)/launch/two_realsense_chessboard.rviz"/>
+</launch>
